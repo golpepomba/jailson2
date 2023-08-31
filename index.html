@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+   <h1>Alunos</h1>
+
+    <ul id="lista-alunos"></ul>
+
+
+
+    
+   </div>
+
+   <script>
+
+
+
+    fetch('data.json')
+    .then(response=>response.json())
+    .then(data=>{
+        const listaAlunosElement=document.getElementById('lista-alunos')
+
+        data.alunos.forEach(aluno => {
+            const li = document.createElement('li')
+
+            li.innerHTML=`
+            <p>ID: ${aluno.id}</p> <br>
+            <p> Nome: ${aluno.nome}</p> <br>
+            <p>Notas: ${aluno.nota} </p><br>
+            <p>Disciplinas: ${aluno.disciplinas.join(', ')}</p>
+            <br><br>`;
+            
+            listaAlunosElement.appendChild(li);
+        });
+        
+    })
+    .catch(error=>console.error('Erro'))
+     
+    fetch('data.json')
+     
+
+
+   </script>
+
+   
+    
+   
+</body>
+</html>
